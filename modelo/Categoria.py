@@ -1,0 +1,24 @@
+from enum import Enum
+
+
+class Categoria(Enum):
+    NO_RECONOCIDO = 0
+    NATURAL = 1
+    REAL = 2
+    IDENTIFICADOR = 3
+    PALABRA_RESERVADA = 4
+    COMENTARIO_LINEA = 5
+    COMENTARIO_BLOQUE = 6
+    OPERADOR_ARITMETICO = 7
+    OPERADOR_RELACIONAL = 8
+    OPERADOR_LOGICO = 9
+    OPERADOR_INCREMENTO = 10
+    COMENTARIO = 11
+    ERROR_LEXICO = 12
+    SEPARADOR = 13
+    HEXADECIMAL = 14
+    LLAVE_APERTURA = 15
+    LLAVE_CIERRE = 16
+
+    def __str__(self):
+        return self.name

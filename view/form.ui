@@ -3,7 +3,7 @@
  <class>Widget</class>
  <widget class="QWidget" name="Widget">
   <property name="windowModality">
-   <enum>Qt::ApplicationModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="enabled">
    <bool>true</bool>
@@ -34,19 +34,37 @@
     <height>410</height>
    </size>
   </property>
+  <property name="sizeIncrement">
+   <size>
+    <width>636</width>
+    <height>410</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>636</width>
+    <height>410</height>
+   </size>
+  </property>
   <property name="font">
    <font>
     <stylestrategy>NoAntialias</stylestrategy>
    </font>
   </property>
   <property name="focusPolicy">
-   <enum>Qt::ClickFocus</enum>
+   <enum>Qt::TabFocus</enum>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::CustomContextMenu</enum>
   </property>
   <property name="windowTitle">
    <string>MyFirst</string>
   </property>
   <property name="layoutDirection">
    <enum>Qt::RightToLeft</enum>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(53, 53, 79);</string>
@@ -114,9 +132,9 @@ font: 87 14pt &quot;Arial Black&quot;;</string>
   <widget class="QFrame" name="frame_2">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>20</x>
      <y>220</y>
-     <width>541</width>
+     <width>601</width>
      <height>181</height>
     </rect>
    </property>
@@ -142,7 +160,7 @@ border:1px solid rgb(20, 200, 220);</string>
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>521</width>
+      <width>581</width>
       <height>161</height>
      </rect>
     </property>
@@ -259,9 +277,9 @@ background-color: rgb(53, 53, 79);</string>
   <widget class="QFrame" name="frame_4">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>90</x>
      <y>120</y>
-     <width>381</width>
+     <width>441</width>
      <height>61</height>
     </rect>
    </property>
@@ -279,7 +297,7 @@ border:1px solid rgb(20, 200, 220);</string>
    <widget class="QPushButton" name="btnLimpiar">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>270</x>
       <y>10</y>
       <width>141</width>
       <height>41</height>
@@ -306,7 +324,7 @@ background-color: black;
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>img/bote.svg</normaloff>img/bote.svg</iconset>
+      <normaloff>img/proce.svg</normaloff>img/proce.svg</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -348,7 +366,7 @@ background-color: black;
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>img/proce.svg</normaloff>img/proce.svg</iconset>
+      <normaloff>img/bote.svg</normaloff>img/bote.svg</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -363,7 +381,7 @@ background-color: black;
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>220</x>
       <y>0</y>
       <width>3</width>
       <height>61</height>

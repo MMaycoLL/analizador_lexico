@@ -9,4 +9,12 @@ PalabrasReservadas = [
     "Import",
     "Clase",
     "Return",
-    "Break"]
+    "Break",
+    "Palabra",
+    "Python",
+    "Tlf",
+    "Lexico",
+    "Sintactico",
+    "Semantico",
+    "Error",
+    "True",]
