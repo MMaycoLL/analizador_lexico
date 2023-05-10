@@ -54,7 +54,11 @@ class AnalizadorLexico:
         if token is not None:
             return token
 
-        token = self.extraer_operador_incremento_decremento(indice)
+        token = self.extraer_operador_incremento(indice)
+        if token is not None:
+            return token
+
+        token = self.extraer_operador_decremento(indice)
         if token is not None:
             return token
 
@@ -82,7 +86,11 @@ class AnalizadorLexico:
         if token is not None:
             return token
 
-        token = self.extraer_comentario(indice)
+        token = self.extraer_comentario_linea(indice)
+        if token is not None:
+            return token
+
+        token = self.extraer_comentario_bloque(indice)
         if token is not None:
             return token
 
@@ -132,7 +140,7 @@ class AnalizadorLexico:
             if fin != -1:  # Verifica si se encontró el cierre de la llave
                 identificador = self.codigo_fuente[inicio:fin]
                 if len(identificador) <= 10 and identificador.isalnum():
-                    return Token("{" + identificador + "}", Categoria.IDENTIFICADOR, fin + 1)
+                    return Token(identificador, Categoria.IDENTIFICADOR, fin + 1)
                 else:
                     # Error: identificador no cumple con los requisitos
                     error = self.codigo_fuente[indice:fin + 1]
@@ -154,8 +162,8 @@ class AnalizadorLexico:
                 return Token(palabra, Categoria.PALABRA_RESERVADA, indice + len(palabra))
         return None
 
-    def extraer_operador_aritmetico(self, indice):
-        operadores_aritmeticos = ["+", "-", "*", "/"]
+    def extraer_operador_aritmetico(self, indice):  # operadores aritmeticos ¿ = + ; ? = - ; + = * ; - = /
+        operadores_aritmeticos = ["¿", "?", "+", "-"]
         for operador in operadores_aritmeticos:
             if self.codigo_fuente.startswith(operador, indice):
                 return Token(operador, Categoria.OPERADOR_ARITMETICO, indice + len(operador))
@@ -182,11 +190,22 @@ class AnalizadorLexico:
                 return Token(operador, Categoria.OPERADOR_ASIGNACION, indice + len(operador))
         return None
 
-    def extraer_operador_incremento_decremento(self, indice):
-        operadores_incremento_decremento = ["++", "--"]
-        for operador in operadores_incremento_decremento:
-            if self.codigo_fuente.startswith(operador, indice):
-                return Token(operador, Categoria.OPERADOR_INCREMENTO_DECREMENTO, indice + len(operador))
+    def extraer_operador_incremento(self, indice):
+        operador_incremento = "."
+        if self.codigo_fuente.startswith(operador_incremento, indice) and len(self.codigo_fuente) > indice + len(
+                operador_incremento):
+            siguiente_caracter = self.codigo_fuente[indice + len(operador_incremento)]
+            if not siguiente_caracter.isalnum():
+                return Token(operador_incremento, Categoria.OPERADOR_INCREMENTO, indice + len(operador_incremento))
+        return None
+
+    def extraer_operador_decremento(self, indice):
+        operador_decremento = "¡"
+        if self.codigo_fuente.startswith(operador_decremento, indice) and len(self.codigo_fuente) > indice + len(
+                operador_decremento):
+            siguiente_caracter = self.codigo_fuente[indice + len(operador_decremento)]
+            if not siguiente_caracter.isalnum():
+                return Token(operador_decremento, Categoria.OPERADOR_DECREMENTO, indice + len(operador_decremento))
         return None
 
     def extraer_parentesis(self, indice):
@@ -198,52 +217,75 @@ class AnalizadorLexico:
 
     def extraer_llaves(self, indice):
         if self.codigo_fuente[indice] == "[":
-            return Token("{", Categoria.LLAVE_APERTURA, indice + 1)
+            return Token("[", Categoria.LLAVE_APERTURA, indice + 1)
         elif self.codigo_fuente[indice] == "]":
-            return Token("}", Categoria.LLAVE_CIERRE, indice + 1)
+            return Token("]", Categoria.LLAVE_CIERRE, indice + 1)
         return None
 
     def extraer_terminal(self, indice):
-        if self.codigo_fuente[indice] == ";":
-            return Token(";", Categoria.TERMINAL, indice + 1)
+        if self.codigo_fuente[indice] == ",":
+            return Token(",", Categoria.TERMINAL, indice + 1)
         return None
 
     def extraer_separador(self, indice):
-        if self.codigo_fuente[indice] == ",":
-            return Token(",", Categoria.SEPARADOR, indice + 1)
+        if self.codigo_fuente[indice] == ";":
+            return Token(";", Categoria.SEPARADOR, indice + 1)
         return None
 
     def extraer_hexadecimal(self, indice):
-        if indice < len(self.codigo_fuente) and self.codigo_fuente[indice] in "0123456789ABCDEFabcdef":
-            posicion = indice
-            while indice < len(self.codigo_fuente) and self.codigo_fuente[indice] in "0123456789ABCDEFabcdef":
-                indice += 1
-            return Token(self.codigo_fuente[posicion:indice], Categoria.HEXADECIMAL, indice)
+        if indice < len(self.codigo_fuente) and self.codigo_fuente[indice] == "¬":
+            inicio = indice + 1
+            fin = self.codigo_fuente.find("¬", inicio)
+            if fin != -1:  # Verifica si se encontró el cierre de "¬¬"
+                hexadecimal = self.codigo_fuente[inicio:fin]
+                if len(hexadecimal) > 0 and all(c in "0123456789ABCDEF" for c in hexadecimal):
+                    return Token(hexadecimal, Categoria.HEXADECIMAL, fin + 1)
+
+            # Error: el bloque hexadecimal no cumple con los requisitos
+            error = self.codigo_fuente[indice:fin + 1]
+            return Token(error, Categoria.ERROR_LEXICO, fin + 1)
+
         return None
 
     def extraer_cadena_caracteres(self, indice):
-        if indice < len(self.codigo_fuente) and self.codigo_fuente[indice] == "$":
+        if indice < len(self.codigo_fuente) and self.codigo_fuente[indice] == "%":
             posicion = indice + 1
             indice += 1
-            while indice < len(self.codigo_fuente) and self.codigo_fuente[indice] != "$":
+            while indice < len(self.codigo_fuente) and self.codigo_fuente[indice] != "%":
                 indice += 1
-            if indice < len(self.codigo_fuente) and self.codigo_fuente[indice] == "$":
+            if indice < len(self.codigo_fuente) and self.codigo_fuente[indice] == "%":
                 return Token(self.codigo_fuente[posicion:indice], Categoria.CADENA_CARACTERES, indice + 1)
             else:
                 # No se encontró el cierre de la cadena
                 return Token(self.codigo_fuente[posicion:], Categoria.ERROR_LEXICO, indice + 1)
         return None
 
-    def extraer_comentario(self, indice):
+    def extraer_comentario_linea(self, indice):
         if indice < len(self.codigo_fuente) and self.codigo_fuente[indice] == "#":
             posicion = indice
             while indice < len(self.codigo_fuente) and self.codigo_fuente[indice] != "\n":
                 indice += 1
-            return Token(self.codigo_fuente[posicion:indice], Categoria.COMENTARIO, indice)
+            return Token(self.codigo_fuente[posicion:indice], Categoria.COMENTARIO_LINEA, indice)
+        return None
+
+    def extraer_comentario_bloque(self, indice):
+        if indice < len(self.codigo_fuente) and self.codigo_fuente[indice] == "°":
+            inicio = indice
+            fin = self.codigo_fuente.find("°", inicio + 1)
+            if fin != -1:  # Verifica si se encontró el cierre del comentario
+                return Token(self.codigo_fuente[inicio:fin + 1], Categoria.COMENTARIO_BLOQUE, fin + 1)
+            else:
+                # Error: falta el cierre del comentario
+                error = self.codigo_fuente[inicio:]
+                return Token(error, Categoria.ERROR_LEXICO, len(self.codigo_fuente))
         return None
 
     def extraer_no_reconocido(self, indice):
         lexema = self.codigo_fuente[indice]
+        if lexema == "¡":
+            return Token(lexema, Categoria.OPERADOR_DECREMENTO, indice + 1)
+        elif lexema == ".":
+            return Token(lexema, Categoria.OPERADOR_INCREMENTO, indice + 1)
         return Token(lexema, Categoria.NO_RECONOCIDO, indice + 1)
 
     def get_lista_tokens(self):
