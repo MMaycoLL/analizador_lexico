@@ -1,14 +1,12 @@
-from modelo.AnalizadorLexico  import AnalizadorLexico
+import sys
+from PyQt5.QtWidgets import QApplication
+from view.ControladorView import ControladorView
 
 def main():
-    codigo_fuente = "{23423}"
-    analizador = AnalizadorLexico(codigo_fuente)
-    analizador.analizar()
-
-    # Accede a la lista de tokens generada por el analizador léxico
-    lista_tokens = analizador.get_lista_tokens()
-    for token in lista_tokens:
-        print(token)
+    app = QApplication(sys.argv) # "{Variable} = %hola%;  Private;1~2"
+    controlador = ControladorView()
+    controlador.mostrar_ventana()
+    sys.exit(app.exec_())
 
 if __name__ == "__main__":
     main()

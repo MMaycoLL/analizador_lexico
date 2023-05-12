@@ -16,34 +16,44 @@ class Ui_Widget(object):
         Widget.setObjectName("Widget")
         Widget.setWindowModality(QtCore.Qt.NonModal)
         Widget.setEnabled(True)
-        Widget.resize(636, 410)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
+        Widget.resize(1000, 600)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Widget.sizePolicy().hasHeightForWidth())
         Widget.setSizePolicy(sizePolicy)
         Widget.setMinimumSize(QtCore.QSize(0, 0))
-        Widget.setMaximumSize(QtCore.QSize(636, 410))
-        Widget.setSizeIncrement(QtCore.QSize(636, 410))
-        Widget.setBaseSize(QtCore.QSize(636, 410))
+        Widget.setMaximumSize(QtCore.QSize(1000, 700))
+        Widget.setSizeIncrement(QtCore.QSize(1000, 700))
+        Widget.setBaseSize(QtCore.QSize(1000, 7000))
         font = QtGui.QFont()
-        font.setStyleStrategy(QtGui.QFont.NoAntialias)
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         Widget.setFont(font)
+        Widget.setCursor(QtGui.QCursor(QtCore.Qt.UpArrowCursor))
         Widget.setFocusPolicy(QtCore.Qt.TabFocus)
         Widget.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         Widget.setLayoutDirection(QtCore.Qt.RightToLeft)
         Widget.setAutoFillBackground(False)
-        Widget.setStyleSheet("background-color: rgb(53, 53, 79);")
+        Widget.setStyleSheet("\n"
+"\n"
+"\n"
+"\n"
+"border-radius:8px;\n"
+"border:2px solid rgb(20, 200, 220);\n"
+"background-color: rgb(53, 53, 79);")
         Widget.setLocale(QtCore.QLocale(QtCore.QLocale.Spanish, QtCore.QLocale.Argentina))
         self.frame = QtWidgets.QFrame(Widget)
-        self.frame.setGeometry(QtCore.QRect(0, 0, 681, 31))
+        self.frame.setGeometry(QtCore.QRect(0, 0, 1001, 31))
         self.frame.setStyleSheet("background-color:rgb(0, 0, 0)")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.label = QtWidgets.QLabel(self.frame)
-        self.label.setGeometry(QtCore.QRect(10, -1, 621, 31))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
+        self.label.setGeometry(QtCore.QRect(0, 0, 1001, 31))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
@@ -57,21 +67,22 @@ class Ui_Widget(object):
         self.label.setFont(font)
         self.label.setStyleSheet("color: rgb(20, 200, 220);\n"
 "font: 87 14pt \"Arial Black\";")
+        self.label.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.label.setFrameShadow(QtWidgets.QFrame.Raised)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.frame_2 = QtWidgets.QFrame(Widget)
-        self.frame_2.setGeometry(QtCore.QRect(20, 220, 601, 181))
+        self.frame_2.setGeometry(QtCore.QRect(20, 390, 961, 201))
         self.frame_2.setStyleSheet("background-color: rgb(246, 239, 248);\n"
-"border-radius:6px;\n"
-"border:1px solid rgb(20, 200, 220);")
+"border-radius:8px;\n"
+"border:3px solid rgb(20, 200, 220);")
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setLineWidth(0)
         self.frame_2.setObjectName("frame_2")
         self.txtRespuesta = QtWidgets.QTextEdit(self.frame_2)
         self.txtRespuesta.setEnabled(True)
-        self.txtRespuesta.setGeometry(QtCore.QRect(10, 10, 581, 161))
+        self.txtRespuesta.setGeometry(QtCore.QRect(10, 10, 941, 181))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(1)
@@ -79,37 +90,38 @@ class Ui_Widget(object):
         self.txtRespuesta.setSizePolicy(sizePolicy)
         self.txtRespuesta.setBaseSize(QtCore.QSize(2, 0))
         self.txtRespuesta.setStyleSheet("color: rgb(20, 200, 220);\n"
-"font:  12pt \"Arial Black\";\n"
+"font:  18pt \"Arial Black\";\n"
 "\n"
-"border-radius:8px;\n"
-"border:1px solid rgb(20, 200, 220);\n"
+"border-radius:18px;\n"
+"border:2px solid rgb(20, 200, 220);\n"
 "background-color: rgb(53, 53, 79);")
         self.txtRespuesta.setInputMethodHints(QtCore.Qt.ImhNone)
         self.txtRespuesta.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.txtRespuesta.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
         self.txtRespuesta.setDocumentTitle("")
         self.txtRespuesta.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.txtRespuesta.setPlaceholderText("")
         self.txtRespuesta.setObjectName("txtRespuesta")
         self.frame_3 = QtWidgets.QFrame(Widget)
-        self.frame_3.setGeometry(QtCore.QRect(9, 40, 621, 61))
+        self.frame_3.setGeometry(QtCore.QRect(19, 40, 961, 161))
         self.frame_3.setStyleSheet("background-color: rgb(246, 239, 248);\n"
-"border-radius:6px;\n"
-"border:1px solid rgb(20, 200, 220);")
+"border-radius:8px;\n"
+"border:3px solid rgb(20, 200, 220);")
         self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_3.setObjectName("frame_3")
         self.txtExpresion = QtWidgets.QLineEdit(self.frame_3)
-        self.txtExpresion.setGeometry(QtCore.QRect(9, 9, 601, 41))
+        self.txtExpresion.setGeometry(QtCore.QRect(9, 9, 941, 141))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.txtExpresion.sizePolicy().hasHeightForWidth())
         self.txtExpresion.setSizePolicy(sizePolicy)
         self.txtExpresion.setStyleSheet("color: rgb(20, 200, 220);\n"
-"font:  12pt \"Arial Black\";\n"
+"font:  18pt \"Arial Black\";\n"
 "\n"
-"border-radius:6px;\n"
-"border:1px solid rgb(20, 200, 220);\n"
+"border-radius:15px;\n"
+"border:2px solid rgb(20, 200, 220);\n"
 "background-color: rgb(53, 53, 79);")
         self.txtExpresion.setLocale(QtCore.QLocale(QtCore.QLocale.Spanish, QtCore.QLocale.Argentina))
         self.txtExpresion.setMaxLength(32770)
@@ -119,22 +131,22 @@ class Ui_Widget(object):
         self.txtExpresion.setClearButtonEnabled(True)
         self.txtExpresion.setObjectName("txtExpresion")
         self.frame_4 = QtWidgets.QFrame(Widget)
-        self.frame_4.setGeometry(QtCore.QRect(90, 120, 441, 61))
+        self.frame_4.setGeometry(QtCore.QRect(290, 240, 461, 81))
         self.frame_4.setStyleSheet("\n"
-"border-radius:6px;\n"
-"border:1px solid rgb(20, 200, 220);")
+"border-radius:10px;\n"
+"border:3px solid rgb(20, 200, 220);")
         self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_4.setObjectName("frame_4")
         self.btnLimpiar = QtWidgets.QPushButton(self.frame_4)
-        self.btnLimpiar.setGeometry(QtCore.QRect(270, 10, 141, 41))
+        self.btnLimpiar.setGeometry(QtCore.QRect(290, 10, 141, 61))
         self.btnLimpiar.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.btnLimpiar.setStyleSheet("QPushButton{\n"
 "color: rgb(20, 200, 220);\n"
-"font: 87 12pt \"Arial Black\";\n"
+"font: 87 15pt \"Arial Black\";\n"
 "background-color: #000000ff;\n"
-"border-radius:5px;\n"
-"border:1px solid white;\n"
+"border-radius:8px;\n"
+"border:4px solid white;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -147,14 +159,14 @@ class Ui_Widget(object):
         self.btnLimpiar.setCheckable(False)
         self.btnLimpiar.setObjectName("btnLimpiar")
         self.btnAnalizar = QtWidgets.QPushButton(self.frame_4)
-        self.btnAnalizar.setGeometry(QtCore.QRect(20, 10, 141, 41))
+        self.btnAnalizar.setGeometry(QtCore.QRect(30, 10, 151, 61))
         self.btnAnalizar.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.btnAnalizar.setStyleSheet("QPushButton{\n"
 "color: rgb(20, 200, 220);\n"
-"font: 87 12pt \"Arial Black\";\n"
+"font: 87 15pt \"Arial Black\";\n"
 "background-color: #000000ff;\n"
-"border-radius:5px;\n"
-"border:1px solid white;\n"
+"border-radius:8px;\n"
+"border:4px solid white;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -167,9 +179,14 @@ class Ui_Widget(object):
         self.btnAnalizar.setCheckable(False)
         self.btnAnalizar.setObjectName("btnAnalizar")
         self.line = QtWidgets.QFrame(self.frame_4)
-        self.line.setGeometry(QtCore.QRect(220, 0, 3, 61))
-        self.line.setFrameShape(QtWidgets.QFrame.VLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setGeometry(QtCore.QRect(240, 0, 1, 80))
+        self.line.setStyleSheet("\n"
+"border:4px solid rgb(20, 200, 220);\n"
+"\n"
+"\n"
+"")
+        self.line.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setObjectName("line")
         self.frame_4.raise_()
         self.frame_3.raise_()
@@ -186,8 +203,8 @@ class Ui_Widget(object):
         self.txtRespuesta.setHtml(_translate("Widget", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Arial Black\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600; font-style:italic;\">Análisis léxico</span></p></body></html>"))
+"</style></head><body style=\" font-family:\'Arial Black\'; font-size:18pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:22pt; font-weight:600; font-style:italic;\">Análisis léxico</span></p></body></html>"))
         self.txtExpresion.setText(_translate("Widget", "introduce una expresión"))
         self.btnLimpiar.setText(_translate("Widget", "Limpiar"))
         self.btnAnalizar.setText(_translate("Widget", "Analizar"))
