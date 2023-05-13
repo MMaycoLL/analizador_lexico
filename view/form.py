@@ -72,17 +72,17 @@ class Ui_Widget(object):
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.frame_2 = QtWidgets.QFrame(Widget)
-        self.frame_2.setGeometry(QtCore.QRect(20, 390, 961, 201))
+        self.frame_2.setGeometry(QtCore.QRect(20, 360, 961, 231))
         self.frame_2.setStyleSheet("background-color: rgb(246, 239, 248);\n"
-"border-radius:8px;\n"
-"border:3px solid rgb(20, 200, 220);")
+                                   "border-radius:8px;\n"
+                                   "border:3px solid rgb(20, 200, 220);")
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setLineWidth(0)
         self.frame_2.setObjectName("frame_2")
         self.txtRespuesta = QtWidgets.QTextEdit(self.frame_2)
         self.txtRespuesta.setEnabled(True)
-        self.txtRespuesta.setGeometry(QtCore.QRect(10, 10, 941, 181))
+        self.txtRespuesta.setGeometry(QtCore.QRect(10, 10, 941, 211))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(1)

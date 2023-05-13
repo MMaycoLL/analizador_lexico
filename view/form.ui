@@ -148,9 +148,9 @@ font: 87 14pt &quot;Arial Black&quot;;</string>
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>390</y>
+     <y>360</y>
      <width>961</width>
-     <height>201</height>
+        <height>231</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -176,7 +176,7 @@ border:3px solid rgb(20, 200, 220);</string>
       <x>10</x>
       <y>10</y>
       <width>941</width>
-      <height>181</height>
+         <height>211</height>
      </rect>
     </property>
     <property name="sizePolicy">
