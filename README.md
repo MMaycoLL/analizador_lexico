@@ -48,7 +48,7 @@ El lenguaje MyFirst utiliza los siguientes tokens:
 - Terminal (Fin de sentencia): **","** (coma).
 - Separador: **";"** (punto y coma).
 - Hexadecimal: Se representa con el símbolo **"¬"** seguido de dígitos y letras mayúsculas de la A a la F, es importante
-  que esten entro los simbolos, Por ejemplo, **¬ABC123¬**.
+  que esten entre los simbolos, Por ejemplo, **¬ABC123¬**.
 - Cadenas de caracteres: Se delimitan con el símbolo **"%"** al **inicio** y al **final**. Por ejemplo, **%cadena de
   caracteres%**.
 - Comentarios en línea: Comienzan con el símbolo **"#"** y todo lo que sigue hasta el final de la línea se considera un
